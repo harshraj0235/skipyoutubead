@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+test-suite.html
+generate-icons.html
+generate-icons.js
+_zip_temp/

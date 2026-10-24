@@ -1,0 +1,65 @@
+/* ============================================================
+   YouTube Smart Skip — Content CSS v3.0
+   On-page notification overlay for YouTube
+   ============================================================ */
+
+#yss-notify {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-family: 'YouTube Sans', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  opacity: 0;
+  transform: translateY(-14px) scale(0.92);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  max-width: 360px;
+  white-space: nowrap;
+}
+
+#yss-notify.yt-ss-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.yt-ss-icon { font-size: 18px; flex-shrink: 0; }
+
+#yss-notify.yt-ss-ad {
+  border-left: 4px solid #ff4444;
+  background: linear-gradient(135deg, rgba(255,68,68,0.2), rgba(0,0,0,0.88));
+}
+#yss-notify.yt-ss-music {
+  border-left: 4px solid #7c4dff;
+  background: linear-gradient(135deg, rgba(124,77,255,0.2), rgba(0,0,0,0.88));
+}
+#yss-notify.yt-ss-success {
+  border-left: 4px solid #00e676;
+  background: linear-gradient(135deg, rgba(0,230,118,0.2), rgba(0,0,0,0.88));
+}
+#yss-notify.yt-ss-info {
+  border-left: 4px solid #448aff;
+  background: linear-gradient(135deg, rgba(68,138,255,0.2), rgba(0,0,0,0.88));
+}
+
+@keyframes yss-pulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 24px rgba(124,77,255,0.4); }
+}
+#yss-notify.yt-ss-music.yt-ss-show {
+  animation: yss-pulse 2s ease-in-out infinite;
+}

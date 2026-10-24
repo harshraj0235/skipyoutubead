@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Smart Skip</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-primary: #0a0a14;
+      --bg-card: rgba(18, 18, 32, 0.95);
+      --bg-card-hover: rgba(24, 24, 42, 0.95);
+      --border: rgba(255,255,255,0.06);
+      --text-primary: #f0f0f8;
+      --text-secondary: #8e8ea8;
+      --text-muted: #5e5e78;
+      --accent-red: #FF416C;
+      --accent-purple: #7F00FF;
+      --accent-violet: #E100FF;
+      --accent-green: #00E676;
+      --accent-blue: #448AFF;
+      --gradient-fire: linear-gradient(135deg, #FF416C, #FF4B2B);
+      --gradient-purple: linear-gradient(135deg, #7F00FF, #E100FF);
+      --gradient-success: linear-gradient(135deg, #00E676, #00C853);
+      --radius: 14px;
+      --radius-sm: 10px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 380px;
+      min-height: 520px;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── Ambient Glow Background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -80px; left: -80px;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(127,0,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,65,108,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Header ── */
+    .header {
+      padding: 20px 20px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 1;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo {
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      background: var(--gradient-purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 16px rgba(127,0,255,0.3);
+    }
+    .brand-text h1 {
+      font-size: 16px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff 30%, #c8b8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.3px;
+    }
+    .brand-text .version {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 1px;
+    }
+
+    /* Toggle Switch */
+    .toggle-wrap {
+      position: relative;
+    }
+    .toggle {
+      width: 52px; height: 28px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: #888;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .toggle:checked {
+      background: var(--gradient-purple);
+      border-color: rgba(127,0,255,0.5);
+    }
+    .toggle:checked::after {
+      left: 27px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(127,0,255,0.4);
+    }
+
+    /* ── Content Area ── */
+    .content {
+      padding: 0 16px 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Mode Selector ── */
+    .mode-section {
+      margin-bottom: 14px;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      padding-left: 2px;
+    }
+    .mode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .mode-btn {
+      padding: 12px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.25s ease;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .mode-btn .mode-icon {
+      font-size: 22px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .mode-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(127,0,255,0.2);
+      transform: translateY(-1px);
+    }
+    .mode-btn.active {
+      background: linear-gradient(135deg, rgba(127,0,255,0.15), rgba(225,0,255,0.08));
+      border-color: rgba(127,0,255,0.4);
+      color: var(--text-primary);
+      box-shadow: 0 0 20px rgba(127,0,255,0.1);
+    }
+
+    /* ── Stats Cards ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .stat-card {
+      padding: 14px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-value.red { color: var(--accent-red); }
+    .stat-value.purple { color: var(--accent-violet); }
+    .stat-value.green { color: var(--accent-green); }
+    .stat-label {
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+    }
+
+    /* ── Quick Actions ── */
+    .actions-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .action-btn {
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      border: none;
+      color: white;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .action-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+    .action-btn:active { transform: scale(0.97); }
+    .action-btn.skip-ad {
+      background: var(--gradient-fire);
+      box-shadow: 0 4px 16px rgba(255,65,108,0.25);
+    }
+    .action-btn.skip-music {
+      background: var(--gradient-purple);
+      box-shadow: 0 4px 16px rgba(127,0,255,0.25);
+    }
+    .action-btn .btn-icon { font-size: 16px; }
+
+    /* ── Settings Panel ── */
+    .settings-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .settings-header {
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .settings-header:hover {
+      background: var(--bg-card-hover);
+    }
+    .settings-header span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .settings-chevron {
+      font-size: 10px;
+      color: var(--text-muted);
+      transition: transform 0.3s;
+    }
+    .settings-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .settings-body.open {
+      max-height: 400px;
+    }
+    .setting-row {
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .setting-row label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+    .toggle-sm {
+      width: 38px; height: 20px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .toggle-sm::after {
+      content: '';
+      position: absolute;
+      top: 2px; left: 2px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: #888;
+      transition: all 0.3s ease;
+    }
+    .toggle-sm:checked {
+      background: var(--gradient-success);
+      border-color: rgba(0,230,118,0.4);
+    }
+    .toggle-sm:checked::after {
+      left: 20px;
+      background: white;
+    }
+
+    /* Sensitivity Select */
+    .sensitivity-select {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: var(--text-primary);
+      padding: 4px 8px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .sensitivity-select option {
+      background: #1a1a2e;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      padding: 8px 16px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-btn {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .footer-btn:hover {
+      color: var(--text-secondary);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ── Status Indicator ── */
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .status-dot.on { background: var(--accent-green); box-shadow: 0 0 8px rgba(0,230,118,0.5); }
+    .status-dot.off { background: #666; animation: none; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="brand">
+      <div class="logo">⚡</div>
+      <div class="brand-text">
+        <h1>Smart Skip</h1>
+        <div class="version"><span class="status-dot on" id="statusDot"></span>Active on YouTube</div>
+      </div>
+    </div>
+    <div class="toggle-wrap">
+      <input type="checkbox" class="toggle" id="masterToggle" checked />
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- Mode Selector -->
+    <div class="mode-section">
+      <div class="section-label">Skip Mode</div>
+      <div class="mode-grid">
+        <button class="mode-btn active" data-mode="both">
+          <span class="mode-icon">🔥</span>
+          Both
+        </button>
+        <button class="mode-btn" data-mode="ads">
+          <span class="mode-icon">⛔</span>
+          Ads Only
+        </button>
+        <button class="mode-btn" data-mode="music">
+          <span class="mode-icon">🎵</span>
+          Music Only
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="section-label">Statistics</div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value red" id="statAds">0</div>
+        <div class="stat-label">Ads Skipped</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value purple" id="statMusic">0</div>
+        <div class="stat-label">Music Skipped</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value green" id="statTime">0m</div>
+        <div class="stat-label">Time Saved</div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="section-label">Quick Actions</div>
+    <div class="actions-row">
+      <button class="action-btn skip-ad" id="btnSkipAd">
+        <span class="btn-icon">⛔</span> Skip Ad Now
+      </button>
+      <button class="action-btn skip-music" id="btnSkipMusic">
+        <span class="btn-icon">🎵</span> Skip Music 6m
+      </button>
+    </div>
+
+    <!-- Advanced Settings -->
+    <div class="settings-panel">
+      <div class="settings-header" id="settingsToggle">
+        <span>⚙️ Advanced Settings</span>
+        <span class="settings-chevron" id="chevron">▼</span>
+      </div>
+      <div class="settings-body" id="settingsBody">
+        <div class="setting-row">
+          <label>Speed up ads (16×)</label>
+          <input type="checkbox" class="toggle-sm" id="setSpeedUp" checked />
+        </div>
+        <div class="setting-row">
+          <label>Mute during ads</label>
+          <input type="checkbox" class="toggle-sm" id="setMute" checked />
+        </div>
+        <div class="setting-row">
+          <label>Remove overlay ads</label>
+          <input type="checkbox" class="toggle-sm" id="setOverlay" checked />
+        </div>
+        <div class="setting-row">
+          <label>Remove banner ads</label>
+          <input type="checkbox" class="toggle-sm" id="setBanner" checked />
+        </div>
+        <div class="setting-row">
+          <label>Show notifications</label>
+          <input type="checkbox" class="toggle-sm" id="setNotify" checked />
+        </div>
+        <div class="setting-row">
+          <label>Music sensitivity</label>
+          <select class="sensitivity-select" id="setSensitivity">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <button class="footer-btn" id="resetStats">↺ Reset Stats</button>
+    <button class="footer-btn">v6.0</button>
+  </div>
+
+  <script src="js/popup.js"></script>
+</body>
+</html>

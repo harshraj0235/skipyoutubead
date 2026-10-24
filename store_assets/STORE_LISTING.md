@@ -152,6 +152,18 @@ YouTube™ is a trademark of Google LLC. Use of this trademark is subject to Goo
    - **Dimensions:** 1280 × 800 px (JPEG)
    - **Shows:** 100% Ad Blocking, Auto Music Skipper, Privacy & Lightweight 24KB stats.
 
+4. **Screenshot 4 (Smart Music & Song Skipper for Movies):**
+   - **File:** [`store_assets/screenshot_4_music_skipper_1280x800.jpg`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/screenshot_4_music_skipper_1280x800.jpg)
+   - **PNG version:** [`store_assets/screenshot_4_music_skipper_1280x800.png`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/screenshot_4_music_skipper_1280x800.png)
+   - **Dimensions:** 1280 × 800 px (JPEG or 24-bit PNG, no alpha)
+   - **Shows:** Visual timeline comparison of watching movies on YouTube with automated 6-minute song skipping.
+
+5. **Screenshot 5 (Privacy, Security & Lightweight Performance):**
+   - **File:** [`store_assets/screenshot_5_privacy_security_1280x800.jpg`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/screenshot_5_privacy_security_1280x800.jpg)
+   - **PNG version:** [`store_assets/screenshot_5_privacy_security_1280x800.png`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/screenshot_5_privacy_security_1280x800.png)
+   - **Dimensions:** 1280 × 800 px (JPEG or 24-bit PNG, no alpha)
+   - **Shows:** 100% local processing, zero telemetry, Manifest V3 compliance, and 24KB package stats.
+
 ### **Promo Tiles (Required for Store Featuring & Highlights)**
 
 1. **Small Promo Tile (440×280 Canvas):**

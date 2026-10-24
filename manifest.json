@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "YouTube Smart Skip — Video Navigator",
   "version": "1.0.0",
-  "description": "Smart video navigation tool for YouTube. Automatically skip through non-essential video segments and enhance your viewing experience with customizable controls.",
+  "description": "Smart video navigator for YouTube. Auto-skip interruptions and music segments with full user control.",
   "permissions": [
     "storage"
   ],

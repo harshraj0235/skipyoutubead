@@ -4,80 +4,278 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Ad Blocker for YouTube™</title>
+  <meta name="description" content="Privacy Policy for Ad Blocker for YouTube™ — Skip Ads & Music Skipper Chrome Extension. 100% Local, Zero Data Collection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      max-width: 720px;
-      margin: 40px auto;
-      padding: 20px;
-      line-height: 1.7;
-      color: #333;
-      background: #fafafa;
+    :root {
+      --bg: #0d0f18;
+      --card-bg: #141726;
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f1f3f9;
+      --text-muted: #9aa1b8;
+      --accent-coral: #ff4766;
+      --accent-purple: #7928ca;
+      --accent-green: #00df89;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
-    h1 { font-size: 28px; margin-bottom: 8px; }
-    h2 { font-size: 20px; margin-top: 32px; border-bottom: 1px solid #e0e0e0; padding-bottom: 8px; }
-    .last-updated { color: #777; font-size: 14px; margin-bottom: 32px; }
-    ul { margin: 12px 0; padding-left: 24px; }
-    li { margin: 6px 0; }
-    .highlight { background: #e8f5e9; padding: 16px; border-radius: 8px; border-left: 4px solid #4caf50; margin: 16px 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font);
+      line-height: 1.7;
+      padding: 40px 20px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 71, 102, 0.12);
+      border: 1px solid rgba(255, 71, 102, 0.35);
+      color: #ff758f;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #ffffff 40%, #ff758f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .ext-title {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .last-updated {
+      font-size: 13px;
+      color: #69738d;
+    }
+
+    .highlight-card {
+      background: rgba(0, 223, 137, 0.08);
+      border: 1px solid rgba(0, 223, 137, 0.25);
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin: 30px 0 40px;
+    }
+
+    .highlight-card h3 {
+      color: var(--accent-green);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .highlight-card p {
+      font-size: 15px;
+      color: #c9d1e9;
+      line-height: 1.6;
+    }
+
+    .section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section p {
+      color: #b5bdd2;
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin: 14px 0;
+    }
+
+    li {
+      position: relative;
+      padding-left: 26px;
+      margin-bottom: 10px;
+      color: #b5bdd2;
+      font-size: 15px;
+    }
+
+    li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    li.denied::before {
+      content: "✖";
+      color: var(--accent-coral);
+    }
+
+    code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+      font-size: 14px;
+      color: #ff9fb2;
+    }
+
+    a {
+      color: #ff758f;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid var(--card-border);
+      color: #69738d;
+      font-size: 13px;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: October 24, 2026</p>
+  <div class="container">
+    <header>
+      <div class="badge">Official Legal Document</div>
+      <h1>Privacy Policy</h1>
+      <div class="ext-title">Ad Blocker for YouTube™ — Skip Ads & Music Skipper</div>
+      <div class="last-updated">Last Updated: October 24, 2026 • Effective Date: October 24, 2026</div>
+    </header>
 
-  <p><strong>Ad Blocker for YouTube™ — Skip Ads & Music Skipper</strong> ("the Extension") is committed to protecting your privacy. This Privacy Policy explains how the Extension handles information.</p>
+    <div class="highlight-card">
+      <h3>🛡️ Privacy Summary</h3>
+      <p><strong>Zero Data Collection Guarantee:</strong> This extension operates 100% locally on your computer. It does NOT collect, store, transmit, or share any personal data, browsing history, or identifiers. Everything runs directly inside your browser.</p>
+    </div>
 
-  <div class="highlight">
-    <strong>Summary:</strong> This Extension does NOT collect, store, transmit, or share any personal data or user information. All data stays on your device.
+    <div class="section">
+      <h2>1. Information We Do NOT Collect</h2>
+      <p>We believe your browsing activity is strictly private. Our extension does not collect any data from you:</p>
+      <ul>
+        <li class="denied">No Personally Identifiable Information (name, email, IP address, device IDs)</li>
+        <li class="denied">No Browsing or Search History</li>
+        <li class="denied">No YouTube Account Credentials or Passwords</li>
+        <li class="denied">No Video Watching History or Keystrokes</li>
+        <li class="denied">No Analytics, Telemetry, or External Tracking Pixels</li>
+        <li class="denied">No Cookies Created, Read, or Transmitted</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>2. Local Storage Usage (chrome.storage)</h2>
+      <p>The extension uses Chrome's built-in <code>chrome.storage</code> API solely to persist your own personal preferences on your machine. This data never leaves your device and includes:</p>
+      <ul>
+        <li>Selected Protection Mode (e.g., <em>Full Protection</em>, <em>Ad Blocker Only</em>, or <em>Music Skipper Only</em>)</li>
+        <li>Music detection sensitivity level (<em>Low</em>, <em>Medium</em>, or <em>High</em>)</li>
+        <li>Sound and notification preference toggles</li>
+        <li>Local skip counters (number of ads skipped and time saved)</li>
+      </ul>
+      <p>All stored preferences can be deleted immediately at any time by uninstalling the extension or clearing extension data.</p>
+    </div>
+
+    <div class="section">
+      <h2>3. Permissions Justification</h2>
+      <p>To deliver its single purpose, the extension requests the absolute minimum necessary permissions:</p>
+      <ul>
+        <li><strong><code>storage</code></strong> — Required to save your customized extension settings locally on your machine.</li>
+        <li><strong><code>https://www.youtube.com/*</code></strong> (Host Permission) — Required to inject content scripts into YouTube video watch pages to detect ad elements, click native skip buttons, read subtitle markers for music skipping, and display in-player control buttons.</li>
+      </ul>
+      <p>The extension does NOT request access to any other website, tab, or domain.</p>
+    </div>
+
+    <div class="section">
+      <h2>4. Zero Remote Code</h2>
+      <p>All scripts, stylesheets, and assets are packaged and bundled directly within the extension package file. The extension contains zero <code>eval()</code> calls, no external scripts loaded from CDNs, and strictly adheres to Google Chrome Manifest V3 remote code execution prohibitions.</p>
+    </div>
+
+    <div class="section">
+      <h2>5. Third-Party Services & Data Sharing</h2>
+      <p>We do not partner with third-party advertising networks, analytics platforms, or data brokers. Because no data is collected, no data is sold, transferred, or monetized under any circumstances.</p>
+    </div>
+
+    <div class="section">
+      <h2>6. Children's Privacy</h2>
+      <p>The extension is a family-safe utility that does not collect information from anyone, including children under the age of 13, in strict compliance with the Children's Online Privacy Protection Act (COPPA).</p>
+    </div>
+
+    <div class="section">
+      <h2>7. Open Source & Support Inquiries</h2>
+      <p>This extension is fully open source and transparent. You can inspect the source code, suggest features, or submit questions on our GitHub repository:</p>
+      <p>🔗 <strong>Support & Source Code:</strong> <a href="https://github.com/harshraj0235/skipyoutubead" target="_blank" rel="noopener">https://github.com/harshraj0235/skipyoutubead</a></p>
+      <p>🔗 <strong>Issue Tracker:</strong> <a href="https://github.com/harshraj0235/skipyoutubead/issues" target="_blank" rel="noopener">https://github.com/harshraj0235/skipyoutubead/issues</a></p>
+    </div>
+
+    <footer>
+      <p><strong>Ad Blocker for YouTube™ — Skip Ads & Music Skipper</strong></p>
+      <p>YouTube™ is a trademark of Google LLC. This extension is an independent open-source project and is not affiliated with, endorsed by, or sponsored by YouTube or Google LLC.</p>
+      <p>© 2026 harshraj0235. All rights reserved.</p>
+    </footer>
   </div>
-
-  <h2>1. Information We Collect</h2>
-  <p><strong>We do not collect any personal information.</strong> The Extension operates entirely on your local device. Specifically:</p>
-  <ul>
-    <li>No personal data is collected</li>
-    <li>No browsing history is collected or tracked</li>
-    <li>No user identifiers are created or stored</li>
-    <li>No analytics or telemetry data is gathered</li>
-    <li>No data is transmitted to any external servers</li>
-    <li>No cookies are created or read</li>
-  </ul>
-
-  <h2>2. Local Storage</h2>
-  <p>The Extension uses Chrome's built-in <code>chrome.storage.sync</code> API solely to store your <strong>user preferences</strong> (such as skip mode selection and toggle states). This data:</p>
-  <ul>
-    <li>Is stored locally on your device via Chrome's secure storage mechanism</li>
-    <li>Syncs across your Chrome browsers only if you are signed into Chrome (a built-in Chrome feature)</li>
-    <li>Contains only extension settings (e.g., "skip mode: both", "music sensitivity: medium")</li>
-    <li>Does not contain any personally identifiable information</li>
-    <li>Can be deleted at any time by uninstalling the Extension</li>
-  </ul>
-
-  <h2>3. Permissions Justification</h2>
-  <p>The Extension requests the following permissions, each with a specific purpose:</p>
-  <ul>
-    <li><strong>storage</strong> — To save and retrieve your Extension settings and preferences locally.</li>
-    <li><strong>host_permissions (youtube.com)</strong> — To run the content script on YouTube pages for video navigation functionality. The Extension only operates on <code>youtube.com</code> and no other websites.</li>
-  </ul>
-
-  <h2>4. Third-Party Services</h2>
-  <p>The Extension does <strong>not</strong> use any third-party services, APIs, analytics platforms, advertising networks, or tracking tools.</p>
-
-  <h2>5. Data Sharing</h2>
-  <p>We do <strong>not</strong> share, sell, rent, or disclose any user data to any third parties. There is no user data to share.</p>
-
-  <h2>6. Children's Privacy</h2>
-  <p>The Extension does not knowingly collect any information from children under the age of 13. The Extension does not collect information from anyone.</p>
-
-  <h2>7. Changes to This Policy</h2>
-  <p>If we make any changes to this Privacy Policy, we will update the "Last updated" date at the top of this page. Continued use of the Extension after changes constitutes acceptance of the updated policy.</p>
-
-  <h2>8. Contact</h2>
-  <p>If you have any questions about this Privacy Policy, please reach out by creating an issue on the Extension's support page.</p>
-
-  <hr style="margin-top:40px;border:none;border-top:1px solid #e0e0e0;" />
-  <p style="color:#999;font-size:12px;margin-top:16px;">Ad Blocker for YouTube™ — Skip Ads & Music Skipper. This Extension is an independent open-source tool and is not affiliated with, endorsed by, or sponsored by YouTube or Google LLC.</p>
 
 </body>
 </html>

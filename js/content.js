@@ -46,92 +46,77 @@
     const style = document.createElement('style');
     style.id = 'yss-injected-styles';
     style.textContent = `
-      /* ── Floating Button Container ── */
-      #yss-btn-container {
-        position: absolute !important;
-        bottom: 50px !important;
-        right: 12px !important;
-        z-index: 2147483646 !important;
-        display: flex !important;
-        gap: 10px !important;
-        pointer-events: auto !important;
-        opacity: 0;
-        transform: translateY(8px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-      }
-      /* Show on player hover */
-      #movie_player:hover #yss-btn-container,
-      .html5-video-player:hover #yss-btn-container {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ── Player Buttons ── */
+      /* ── Player Buttons (inside control bar) ── */
       .yss-player-btn {
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 8px !important;
-        padding: 10px 20px !important;
+        gap: 6px !important;
+        padding: 0 16px !important;
+        margin: 4px 4px !important;
         border: none !important;
-        border-radius: 24px !important;
+        border-radius: 18px !important;
         font-family: 'YouTube Sans', 'Roboto', -apple-system, sans-serif !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.5px !important;
+        font-size: 12px !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.8px !important;
         text-transform: uppercase !important;
         cursor: pointer !important;
-        color: white !important;
-        min-width: 130px !important;
-        height: 40px !important;
-        line-height: 1 !important;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+        color: #fff !important;
+        width: auto !important;
+        min-width: 110px !important;
+        max-width: none !important;
+        height: 28px !important;
+        line-height: 28px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        flex-shrink: 0 !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.35) !important;
         position: relative !important;
-        overflow: hidden !important;
+        overflow: visible !important;
         white-space: nowrap !important;
-        backdrop-filter: blur(8px) !important;
-        -webkit-backdrop-filter: blur(8px) !important;
+        vertical-align: middle !important;
       }
       .yss-player-btn::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 50%);
         pointer-events: none;
-        border-radius: 24px;
+        border-radius: 18px;
       }
       .yss-player-btn:hover {
-        transform: scale(1.06) translateY(-2px) !important;
-        box-shadow: 0 6px 24px rgba(0,0,0,0.5) !important;
-        filter: brightness(1.15) !important;
+        transform: scale(1.05) !important;
+        filter: brightness(1.2) !important;
       }
       .yss-player-btn:active {
         transform: scale(0.95) !important;
       }
       .yss-player-btn .yss-btn-icon {
-        font-size: 16px;
-        filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+        font-size: 14px !important;
+        line-height: 1 !important;
       }
       .yss-player-btn .yss-btn-text {
-        font-size: 13px;
-        font-weight: 700;
+        font-size: 12px !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
       }
 
-      /* Skip Ad — Red Gradient */
+      /* Skip Ad — Red/Orange Gradient */
       .yss-btn-ad {
         background: linear-gradient(135deg, #FF416C, #FF4B2B) !important;
       }
       .yss-btn-ad:hover {
-        box-shadow: 0 6px 28px rgba(255, 65, 108, 0.6) !important;
+        box-shadow: 0 4px 18px rgba(255, 65, 108, 0.55) !important;
       }
 
-      /* Skip Music — Purple Gradient */
+      /* Skip Music — Purple/Magenta Gradient */
       .yss-btn-music {
         background: linear-gradient(135deg, #7F00FF, #E100FF) !important;
       }
       .yss-btn-music:hover {
-        box-shadow: 0 6px 28px rgba(127, 0, 255, 0.6) !important;
+        box-shadow: 0 4px 18px rgba(127, 0, 255, 0.55) !important;
       }
 
       /* ── Notification Toast ── */
@@ -326,23 +311,19 @@
     }
   }
 
-  /* ═══════ PLAYER BUTTONS (FLOATING ABOVE CONTROLS) ═══════ */
+  /* ═══════ PLAYER BUTTONS (IN CONTROL BAR) ═══════ */
   function injectPlayerButtons() {
     if (buttonsAdded) return;
-    const player = getPlayer();
-    if (!player) return;
-    if (document.getElementById('yss-btn-container')) { buttonsAdded = true; return; }
-
-    // Create floating container
-    const container = document.createElement('div');
-    container.id = 'yss-btn-container';
+    const rc = document.querySelector('.ytp-right-controls');
+    if (!rc) return;
+    if (document.getElementById('yss-skipad-btn')) { buttonsAdded = true; return; }
 
     // Skip Ad button
     const adBtn = document.createElement('button');
     adBtn.id = 'yss-skipad-btn';
     adBtn.className = 'yss-player-btn yss-btn-ad';
     adBtn.title = 'Force skip current ad';
-    adBtn.innerHTML = '<span class="yss-btn-icon">⛔</span><span class="yss-btn-text">Skip Ad</span>';
+    adBtn.innerHTML = '<span class="yss-btn-icon">⛔</span><span class="yss-btn-text">SKIP AD</span>';
     adBtn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); forceSkipAd(); });
 
     // Skip Music button
@@ -350,14 +331,14 @@
     mBtn.id = 'yss-skipmusic-btn';
     mBtn.className = 'yss-player-btn yss-btn-music';
     mBtn.title = 'Skip 6 minutes forward (skip music)';
-    mBtn.innerHTML = '<span class="yss-btn-icon">🎵</span><span class="yss-btn-text">Skip Music</span>';
+    mBtn.innerHTML = '<span class="yss-btn-icon">🎵</span><span class="yss-btn-text">SKIP MUSIC</span>';
     mBtn.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); skipMusicNow('Manual skip'); });
 
-    container.appendChild(adBtn);
-    container.appendChild(mBtn);
-    player.appendChild(container);
+    // Insert at the BEGINNING of right controls (leftmost = most visible)
+    rc.insertBefore(mBtn, rc.firstChild);
+    rc.insertBefore(adBtn, rc.firstChild);
     buttonsAdded = true;
-    log('✓ Floating player buttons added');
+    log('✓ Control bar buttons added: [⛔ SKIP AD] [🎵 SKIP MUSIC]');
   }
 
   /* ═══════ AUTO CC ═══════ */

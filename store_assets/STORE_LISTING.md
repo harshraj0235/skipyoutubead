@@ -152,13 +152,36 @@ YouTube™ is a trademark of Google LLC. Use of this trademark is subject to Goo
    - **Dimensions:** 1280 × 800 px (JPEG)
    - **Shows:** 100% Ad Blocking, Auto Music Skipper, Privacy & Lightweight 24KB stats.
 
-### **Global Promo Video**
-- **Field:** *Enter a YouTube video URL*
-- **Recommendation:** **Leave Blank (Optional)**. You do not need a video to publish. You can submit and go live immediately.
+### **Promo Tiles (Required for Store Featuring & Highlights)**
+
+1. **Small Promo Tile (440×280 Canvas):**
+   - **Files:**
+     - PNG: [`store_assets/promo_tile_small_440x280.png`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/promo_tile_small_440x280.png)
+     - JPG: [`store_assets/promo_tile_small_440x280.jpg`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/promo_tile_small_440x280.jpg)
+   - **Dimensions:** Exactly **440 × 280 px** (24-bit RGB, no alpha).
+   - **Action:** Drag and drop into **"Small promo tile"** box.
+
+2. **Marquee Promo Tile (1400×560 Canvas):**
+   - **Files:**
+     - PNG: [`store_assets/promo_tile_marquee_1400x560.png`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/promo_tile_marquee_1400x560.png)
+     - JPG: [`store_assets/promo_tile_marquee_1400x560.jpg`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip/store_assets/promo_tile_marquee_1400x560.jpg)
+   - **Dimensions:** Exactly **1400 × 560 px** (24-bit RGB, no alpha).
+   - **Action:** Drag and drop into **"Marquee promo tile"** box.
 
 ---
 
-## 📌 5. PRIVACY TAB DETAILS (Required by Google Reviewers)
+## 📌 5. ADDITIONAL FIELDS
+
+| Field | Value to Enter | Guidance |
+| :--- | :--- | :--- |
+| **Official URL** | **None** | Keep as `None` unless you have a custom registered domain in Google Search Console. Not required. |
+| **Homepage URL** | `https://github.com/harshraj0235/skipyoutubead` | Official open-source repository and product homepage. |
+| **Support URL** | `https://github.com/harshraj0235/skipyoutubead/issues` | Users can submit questions, bug reports, and feedback here instead of leaving 1-star reviews. |
+| **Mature content** | **UNCHECKED (No)** | **Do not check this.** The extension is family-friendly utility software. Checking this would restrict your visibility. |
+
+---
+
+## 📌 6. PRIVACY TAB DETAILS (Required by Google Reviewers)
 
 When you proceed to the **"Privacy"** tab in the Developer Dashboard:
 
@@ -190,12 +213,18 @@ https://github.com/harshraj0235/skipyoutubead/blob/main/privacy_policy.html
 
 ---
 
-## 📌 6. SUBMISSION CHECKLIST
+## 📌 7. SUBMISSION CHECKLIST
 
 - [x] Package ZIP ready: [`youtube-smart-skip.zip`](file:///c:/Users/HP/Downloads/New%20folder%20(17)/youtube-smart-skip.zip) (24.5 KB)
 - [x] Title and Summary under character limits (50 chars and 116 chars)
 - [x] Category set to **Productivity**
 - [x] Language set to **English**
-- [x] 128×128 icon ready
-- [x] 1280×800 screenshots ready (no alpha, exact dimensions)
+- [x] 128×128 icon uploaded
+- [x] 1280×800 screenshots uploaded
+- [x] 440×280 Small promo tile uploaded
+- [x] 1400×560 Marquee promo tile uploaded
+- [x] Homepage & Support URLs filled
+- [x] Mature content left UNCHECKED
+- [x] Privacy disclosures and justifications documented
+
 - [x] Privacy disclosures and justifications documented

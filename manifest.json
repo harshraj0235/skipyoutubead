@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Smart Skip — Video Navigator",
+  "name": "Ad Blocker for YouTube™ — Skip Ads & Music Skipper",
   "version": "1.0.0",
-  "description": "Smart video navigator for YouTube. Auto-skip interruptions and music segments with full user control.",
+  "description": "Block ads on YouTube, auto-skip video ads, skip music in movies. Fast ad blocker & music skipper for YouTube videos.",
   "permissions": [
     "storage"
   ],

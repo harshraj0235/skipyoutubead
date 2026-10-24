@@ -1,73 +1,98 @@
-# Chrome Web Store Listing — YouTube Smart Skip
+# Chrome Web Store Listing — SEO Optimized
 
-## Title
-YouTube Smart Skip — Video Navigator
+## Title (75 chars max)
+Ad Blocker for YouTube™ — Skip Ads & Music Skipper
 
 ## Short Description (132 characters max)
-Smart video navigation for YouTube. Skip through non-essential segments, navigate music sections, and save time watching videos.
+Block ads on YouTube, auto-skip video ads, skip music in movies. Fast ad blocker & music skipper for YouTube videos.
 
-## Detailed Description (for Chrome Web Store)
+## Detailed Description (for Chrome Web Store — keyword-rich)
 
-🚀 YouTube Smart Skip — The Smart Video Navigator
+🚀 Ad Blocker for YouTube™ — The Ultimate YouTube Ad Skipper & Music Skipper
 
-Tired of sitting through interruptions and non-essential segments while watching YouTube videos? YouTube Smart Skip automatically navigates through video segments so you can focus on what matters.
+The fastest way to block YouTube ads and skip music segments in movies. Auto-skip pre-roll ads, mid-roll ads, banner ads, and overlay ads. Skip background music in movies and long videos instantly.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ✨ KEY FEATURES
 
-⚡ Smart Video Navigation
-• Automatically detects and skips through non-essential video segments
-• Speeds through interruptions at 16× playback
-• Auto-mutes during skippable segments
+⚡ YouTube Ad Blocker — Block All Ads
+• Block pre-roll video ads automatically
+• Block mid-roll ads during videos
+• Skip unskippable ads at 16× speed
+• Remove overlay popup ads on videos
+• Remove sidebar banner ads & sponsored content
+• Auto-click "Skip Ad" button instantly
 
-🎵 Music Segment Detection
-• Detects music-only sections in movies and long videos using YouTube's caption data
-• Automatically skips forward 1 minute when sustained music is detected (no dialogue)
-• Configurable sensitivity — Low, Medium, or High
-• Perfect for watching movies where you want to skip background music interludes
+🎵 Music Skipper — Skip Songs in Movies
+• Detect music-only segments using YouTube captions
+• Auto-skip 6 minutes forward when music plays
+• Skip background music, songs, instrumental interludes
+• Works on Hindi, English, and multilingual content
+• Manual "Skip Music" button on the video player
 
-⚙️ Full User Control — 3 Skip Modes
-• BOTH — Navigate through interruptions AND music segments
-• INTERRUPTIONS ONLY — Skip only interruptions
-• MUSIC ONLY — Skip only music segments in videos
-
-📊 Statistics Dashboard
-• Track segments skipped
-• Track music sections navigated
-• Track total time saved
-
-🛡️ Privacy First
-• Zero data collection — nothing leaves your browser
-• All preferences stored locally via Chrome Storage API
-• No analytics, no tracking, no third-party services
-• Open and readable source code
+⚙️ Full Control — Customize Your Experience
+• 3 Modes: Block Ads + Skip Music | Ads Only | Music Only
+• Adjustable music detection sensitivity (Low / Medium / High)
+• Real-time statistics: ads blocked, music skipped, time saved
+• Toggle notifications on/off
+• One-click buttons directly on the YouTube player
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🎬 PERFECT FOR:
-• Movie watchers who want to skip music interludes
-• Users who want faster video navigation
-• Anyone who values their time while watching YouTube
+• YouTube movie watchers — skip background music & songs
+• Anyone tired of YouTube video ads
+• Users who want ad-free YouTube experience
+• Bollywood & Hollywood movie fans — skip song sequences
+• Students watching long educational videos
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚙️ HOW MUSIC DETECTION WORKS:
-The extension monitors YouTube's auto-generated captions for music markers like [Music], ♪, [Instrumental], etc. When a music-only segment is detected (no dialogue/speech), it waits a configurable confirmation period and then skips forward. This is especially useful for movies and long-form content.
-
-💡 TIP: For best music detection results, make sure captions/CC are enabled on the video. The extension will attempt to enable them automatically.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📋 PERMISSIONS EXPLAINED:
-• storage — Saves your preferences (skip mode, sensitivity settings)
-• youtube.com — Required to run the video navigation script on YouTube pages
-
-This extension operates entirely locally and does not communicate with any external servers.
+🛡️ PRIVACY & SECURITY
+• Zero data collection — your privacy is protected
+• No tracking, no analytics, no third-party services
+• All settings stored locally on your device
+• Manifest V3 compliant — latest Chrome security standards
+• Open source code — fully transparent
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Made with ❤️ for a better YouTube experience.
+📋 MINIMAL PERMISSIONS:
+• storage — Save your preferences locally
+• youtube.com — Run ad blocker on YouTube pages only
+
+This YouTube ad blocker extension operates entirely locally. No data is collected, stored, or transmitted.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 HOW THE AD BLOCKER WORKS:
+Our YouTube ad blocker uses advanced detection to identify and remove all types of YouTube ads:
+1. Detects ad elements the moment they appear
+2. Clicks the "Skip Ad" button automatically
+3. Forces ads to end instantly
+4. Speeds up unskippable ads at 16× with auto-mute
+5. Removes banner ads and overlay ads from the page
+
+🎵 HOW MUSIC SKIPPER WORKS:
+1. Monitors YouTube's auto-generated captions
+2. Detects music markers (♪, [Music], [Instrumental])
+3. Detects caption silence (no dialogue = music playing)
+4. Skips forward 6 minutes automatically
+5. Stops skipping when speech/dialogue resumes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⭐ Why choose our YouTube Ad Blocker?
+✅ Blocks ALL YouTube ad types
+✅ Music skipper for movies (unique feature!)
+✅ Beautiful dark theme popup UI
+✅ Skip buttons directly on YouTube player
+✅ Zero data collection — 100% private
+✅ Manifest V3 — modern & secure
+✅ Fast & lightweight (24KB total)
+
+Made with ❤️ for an ad-free YouTube experience.
 
 ## Category
 Productivity
@@ -75,5 +100,21 @@ Productivity
 ## Language
 English
 
+## SEO Keywords Used (for ranking)
+- ad blocker
+- youtube ad blocker
+- skip ads
+- ad skip
+- block ads youtube
+- youtube adblocker
+- skip ads youtube
+- music skipper
+- ad blocker for youtube
+- youtube ad skip
+- block youtube ads
+- ad free youtube
+- skip music
+- video ad blocker
+
 ## Single Purpose Description (for review)
-This extension provides smart video navigation on YouTube by detecting and skipping through non-essential video segments (such as music interludes in movies) using caption analysis, giving users full control over their viewing experience.
+This extension blocks ads on YouTube by detecting and removing ad elements, and skips music segments in videos using caption analysis, providing users with an uninterrupted viewing experience.
